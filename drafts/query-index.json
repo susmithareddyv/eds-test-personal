@@ -1,0 +1,36 @@
+{
+  "total": 4,
+  "offset": 0,
+  "limit": 4,
+  "data": [
+    {
+      "path": "/accounting-cs/2026/version2026-2",
+      "title": "Version 2026.2",
+      "description": "Accounting CS release notes for version 2026.2",
+      "publicationDate": "20260401",
+      "lastModified": "1743465600"
+    },
+    {
+      "path": "/accounting-cs/2026/version2026-1",
+      "title": "Version 2026.1",
+      "description": "Accounting CS release notes for version 2026.1",
+      "publicationDate": "20260101",
+      "lastModified": "1735689600"
+    },
+    {
+      "path": "/accounting-cs/2025/version2025-2",
+      "title": "Version 2025.2",
+      "description": "Accounting CS release notes for version 2025.2",
+      "publicationDate": "20250401",
+      "lastModified": "1743465600"
+    },
+    {
+      "path": "/accounting-cs/2025/version2025-1",
+      "title": "Version 2025.1",
+      "description": "Accounting CS release notes for version 2025.1",
+      "publicationDate": "20250101",
+      "lastModified": "1735689600"
+    }
+  ],
+  ":type": "sheet"
+}

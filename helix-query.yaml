@@ -1,0 +1,44 @@
+version: 1
+
+# The indexing service crawls previewed/published pages and produces JSON
+# "query indices" that front-end code can fetch at runtime. This is the
+# mechanism EDS provides for dynamically discovering content (here: every
+# release-note version any product team publishes).
+#
+# After this file is committed AND the pages are (re-)previewed/published,
+# the index becomes available at the `target` path below.
+indices:
+  release-notes:
+    include:
+      # one folder per product team, each containing year folders with versions
+      - '/*/**'
+    exclude:
+      - '/drafts/**'
+      - '/**/fragments/**'
+      - '/nav'
+      - '/footer'
+    target: /query-index.json
+    properties:
+      title:
+        select: head > meta[property="og:title"]
+        value: |
+          attribute(el, 'content')
+      description:
+        select: head > meta[name="description"]
+        value: |
+          attribute(el, 'content')
+      # ISO date used to order/label versions; authors can set a
+      # "publication-date" metadata field, otherwise we fall back to the
+      # last-modified header at index time.
+      publicationDate:
+        select: head > meta[name="publication-date"]
+        value: |
+          dateValue(attribute(el, 'content'), 'YYYY-MM-DD')
+      lastModified:
+        select: none
+        value: |
+          parseTimestamp(headers('last-modified'), 'ddd, DD MMM YYYY HH:mm:ss GMT')
+      robots:
+        select: head > meta[name="robots"]
+        value: |
+          attribute(el, 'content')
